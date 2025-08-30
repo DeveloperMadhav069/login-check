@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kidpreneur - Empowering Young Entrepreneurs</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="logo-container" aria-label="Kidpreneur logo">
+      <canvas id="logo-canvas" width="120" height="60" aria-hidden="true"></canvas>
+      <span class="logo-text">Kidpreneur</span>
+    </div>
+    <nav class="nav">
+      <ul class="nav-list" role="menubar">
+        <li role="none"><a href="#" role="menuitem" tabindex="0">Home</a></li>
+        <li role="none"><a href="#" role="menuitem">Explore Ideas</a></li>
+        <li role="none"><a href="#" role="menuitem">Submission</a></li>
+        <li role="none"><a href="#" role="menuitem">Challenges</a></li>
+        <li role="none"><a href="#" role="menuitem">Features</a></li>
+        <li role="none"><a href="#" role="menuitem">FAQ</a></li>
+        <li role="none"><a href="#" role="menuitem">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="btn btn-glow btn-3d login-btn" aria-label="Login or Register"><a href="login.html">Login / Register</a></button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-title">Empowering Young Entrepreneurs</h1>
+      <p class="hero-subtext">Kidpreneur is where ideas grow, challenges inspire, and young innovators shine.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-glow btn-3d primary-cta" aria-label="Start Your Journey">Start Your Journey</button>
+        <button class="btn btn-outline btn-3d secondary-cta" aria-label="Explore Ideas">Explore Ideas</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" aria-labelledby="features-title">
+    <h2 id="features-title" class="section-title">Why Kidpreneur?</h2>
+    <div class="features-grid">
+      <div class="feature-card" tabindex="0" aria-describedby="desc-idea-submission">
+        <canvas class="feature-icon" id="icon-rocket" width="80" height="80" aria-hidden="true"></canvas>
+        <h3>Idea Submission</h3>
+        <p id="desc-idea-submission">Simple forms to share creative business ideas.</p>
+      </div>
+      <div class="feature-card" tabindex="0" aria-describedby="desc-explore-learn">
+        <canvas class="feature-icon" id="icon-puzzle" width="80" height="80" aria-hidden="true"></canvas>
+        <h3>Explore & Learn</h3>
+        <p id="desc-explore-learn">Browse ideas from other young innovators.</p>
+      </div>
+      <div class="feature-card" tabindex="0" aria-describedby="desc-gamified-challenges">
+        <canvas class="feature-icon" id="icon-trophy" width="80" height="80" aria-hidden="true"></canvas>
+        <h3>Gamified Challenges</h3>
+        <p id="desc-gamified-challenges">Earn points, unlock badges, and level up as a Kidpreneur.</p>
+      </div>
+      <div class="feature-card" tabindex="0" aria-describedby="desc-support-guidance">
+        <canvas class="feature-icon" id="icon-lightbulb" width="80" height="80" aria-hidden="true"></canvas>
+        <h3>Support & Guidance</h3>
+        <p id="desc-support-guidance">Resources, FAQs, and tools to help kids grow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" aria-labelledby="faq-title">
+    <h2 id="faq-title" class="section-title">Got Questions? We’ve Got Answers.</h2>
+    <div class="faq-accordion" role="region" aria-multiselectable="true">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-label">
+          Who can join Kidpreneur?
+          <span class="arrow" aria-hidden="true"></span>
+        </button>
+        <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-label" hidden>
+          <p>Any kid aged 8 to 14 who wants to explore entrepreneurship and grow their ideas is welcome to join Kidpreneur.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-label">
+          How do I submit my idea?
+          <span class="arrow" aria-hidden="true"></span>
+        </button>
+        <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-label" hidden>
+          <p>Simply fill out our easy submission form on the Submission page with your idea details and any supporting materials.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-label">
+          Are challenges free to enter?
+          <span class="arrow" aria-hidden="true"></span>
+        </button>
+        <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-label" hidden>
+          <p>Yes! All challenges on Kidpreneur are completely free to enter and designed to be fun and rewarding.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-label">
+          Can parents and teachers support?
+          <span class="arrow" aria-hidden="true"></span>
+        </button>
+        <div id="faq4" class="faq-answer" role="region" aria-labelledby="faq4-label" hidden>
+          <p>Absolutely! We encourage parents and teachers to support young entrepreneurs through guidance and encouragement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call-to-Action Strip -->
+  <section class="cta-strip" role="region" aria-label="Call to action">
+    <p>Your ideas matter. Start your entrepreneurial journey today!</p>
+    <button class="btn btn-glow btn-3d cta-join-btn" aria-label="Join Now">Join Now</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Submission</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="social-icons" role="group" aria-label="Social media links">
+      <a href="#" aria-label="YouTube" class="social-icon" id="social-youtube" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#BB0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.94C18.88 4 12 4 12 4s-6.88 0-8.6.48a2.78 2.78 0 0 0-1.94 1.94A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.94c1.72.48 8.6.48 8.6.48s6.88 0 8.6-.48a2.78 2.78 0 0 0 1.94-1.94A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" class="social-icon" id="social-instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37a4 4 0 1 1-4.73-4.73 4 4 0 0 1 4.73 4.73z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" class="social-icon" id="social-linkedin" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0077B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2"/></svg>
+      </a>
+    </div>
+    <p class="footer-tagline">Kidpreneur — Ideas that Shape the Future.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
