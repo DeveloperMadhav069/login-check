@@ -546,9 +546,10 @@ a:focus {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  width: 0 !important; /* collapse width */
+  width: 0 !important;
   min-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden;
 }
+
