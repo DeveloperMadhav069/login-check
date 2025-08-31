@@ -6,10 +6,8 @@
   const w = canvas.width;
   const h = canvas.height;
 
-  // Clear
   ctx.clearRect(0, 0, w, h);
 
-  // Draw glossy 3D "K" letter - simple stylized shape
   const gradient = ctx.createLinearGradient(0, 0, w, 0);
   gradient.addColorStop(0, '#7a00ff');
   gradient.addColorStop(0.5, '#ff33bb');
@@ -17,7 +15,6 @@
 
   ctx.fillStyle = gradient;
 
-  // Draw main K shape with depth
   ctx.shadowColor = '#ff33bb';
   ctx.shadowBlur = 20;
   ctx.shadowOffsetX = 0;
@@ -38,7 +35,6 @@
   ctx.closePath();
   ctx.fill();
 
-  // Gloss highlight shape
   const glossGradient = ctx.createLinearGradient(0, 0, w * 0.7, h);
   glossGradient.addColorStop(0, 'rgba(255,255,255,0.5)');
   glossGradient.addColorStop(1, 'rgba(255,255,255,0)');
@@ -58,10 +54,8 @@
   const canvas = document.getElementById('hero-3d-canvas');
   if (!canvas) return;
 
-  // Scene setup
   const scene = new THREE.Scene();
 
-  // Camera setup
   const camera = new THREE.PerspectiveCamera(
     45,
     canvas.clientWidth / canvas.clientHeight,
@@ -70,7 +64,6 @@
   );
   camera.position.set(0, 0, 8);
 
-  // Renderer
   const renderer = new THREE.WebGLRenderer({
     canvas,
     alpha: true,
@@ -79,7 +72,6 @@
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setClearColor(0x000000, 0);
 
-  // Lights
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambientLight);
 
@@ -90,7 +82,6 @@
   pointLight2.position.set(-5, -5, 5);
   scene.add(pointLight2);
 
-  // Materials
   const neonPink = new THREE.MeshStandardMaterial({
     color: 0xff33bb,
     emissive: 0xff2a9e,
@@ -120,9 +111,6 @@
     metalness: 0.6,
   });
 
-  // Create floating objects (simple geometry approximations)
-
-  // Floating Lightbulb (Sphere + base)
   function createLightbulb() {
     const group = new THREE.Group();
 
@@ -138,7 +126,6 @@
     return group;
   }
 
-  // Floating Gear (Torus + spokes)
   function createGear() {
     const group = new THREE.Group();
 
@@ -156,7 +143,6 @@
     return group;
   }
 
-  // Floating Holographic Laptop (simple box + screen)
   function createLaptop() {
     const group = new THREE.Group();
 
@@ -174,7 +160,6 @@
     return group;
   }
 
-  // Floating Rocket (Cylinder + cone + sphere base)
   function createRocket() {
     const group = new THREE.Group();
 
@@ -195,7 +180,6 @@
     return group;
   }
 
-  // Add objects to scene with initial positions
   const lightbulb = createLightbulb();
   lightbulb.position.set(-3, 1.5, 0);
   scene.add(lightbulb);
@@ -212,10 +196,8 @@
   rocket.position.set(2, -1.5, 0);
   scene.add(rocket);
 
-  // Clock for animations
   const clock = new THREE.Clock();
 
-  // Animate floating and rotation
   function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
@@ -223,13 +205,11 @@
     const floatAmp = 0.25;
     const floatFreq = 0.8;
 
-    // Floating effect with sine wave
     lightbulb.position.y = 1.5 + floatAmp * Math.sin(t * floatFreq);
     gear.position.y = 1.2 + floatAmp * Math.sin(t * floatFreq + 1.5);
     laptop.position.y = -1.5 + floatAmp * Math.sin(t * floatFreq + 3);
     rocket.position.y = -1.5 + floatAmp * Math.sin(t * floatFreq + 4.5);
 
-    // Slow rotations
     lightbulb.rotation.y += 0.007;
     gear.rotation.z += 0.008;
     laptop.rotation.y -= 0.006;
@@ -240,7 +220,6 @@
 
   animate();
 
-  // Resize handling
   window.addEventListener('resize', () => {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -279,7 +258,6 @@
     ctx.shadowColor = '#7a00ff';
     ctx.shadowBlur = 10;
 
-    // Draw 4 puzzle pieces shapes simplified
     const s = size * 0.25;
 
     ctx.beginPath();
@@ -363,7 +341,7 @@
   faqButtons.forEach(button => {
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
-      // Close all other
+      // Close all others
       faqButtons.forEach(btn => {
         btn.setAttribute('aria-expanded', 'false');
         btn.nextElementSibling.hidden = true;
@@ -378,6 +356,7 @@
   });
 })();
 
+// Firebase Authentication and UI logic
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
@@ -396,9 +375,9 @@ const auth = getAuth(app);
 
 const logoutBtn = document.getElementById('logout-btn');
 const loginRegisterBtn = document.getElementById('login-register-btn');
-const logoutBtnContainer = document.getElementById('logout-btn-container'); // Get the container
+const logoutBtnContainer = document.getElementById('logout-btn-container');
 
-// Handle logout button click
+// Logout button click handler
 if (logoutBtn) {
   logoutBtn.addEventListener('click', () => {
     signOut(auth).then(() => {
@@ -411,23 +390,15 @@ if (logoutBtn) {
   });
 }
 
-// Update button visibility based on auth state
+// Auth state change listener to toggle login/logout buttons
 onAuthStateChanged(auth, user => {
   if (user) {
-    // User is logged in
-    if (loginRegisterBtn) {
-      loginRegisterBtn.style.display = 'none'; // Hide login button
-    }
-    if (logoutBtnContainer) {
-      logoutBtnContainer.style.display = 'block'; // Show logout button
-    }
+    // User logged in
+    if (loginRegisterBtn) loginRegisterBtn.style.display = 'none';
+    if (logoutBtnContainer) logoutBtnContainer.style.display = 'block';
   } else {
-    // User is not logged in
-    if (loginRegisterBtn) {
-      loginRegisterBtn.style.display = 'block'; // Show login button
-    }
-    if (logoutBtnContainer) {
-      logoutBtnContainer.style.display = 'none'; // Hide logout button
-    }
+    // User not logged in
+    if (loginRegisterBtn) loginRegisterBtn.style.display = 'block';
+    if (logoutBtnContainer) logoutBtnContainer.style.display = 'none';
   }
 });
