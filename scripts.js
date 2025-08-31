@@ -377,8 +377,9 @@
     });
   });
 })();
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDcwsWKNqy9-sJH5ZjWhkE2Buz4X_Gpk4w",
@@ -394,6 +395,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const logoutBtn = document.getElementById('logout-btn');
+const loginRegisterBtn = document.getElementById('login-register-btn');
+const logoutBtnContainer = document.getElementById('logout-btn-container'); // Get the container
+
+// Handle logout button click
 if (logoutBtn) {
   logoutBtn.addEventListener('click', () => {
     signOut(auth).then(() => {
@@ -405,3 +410,24 @@ if (logoutBtn) {
     });
   });
 }
+
+// Update button visibility based on auth state
+onAuthStateChanged(auth, user => {
+  if (user) {
+    // User is logged in
+    if (loginRegisterBtn) {
+      loginRegisterBtn.style.display = 'none'; // Hide login button
+    }
+    if (logoutBtnContainer) {
+      logoutBtnContainer.style.display = 'block'; // Show logout button
+    }
+  } else {
+    // User is not logged in
+    if (loginRegisterBtn) {
+      loginRegisterBtn.style.display = 'block'; // Show login button
+    }
+    if (logoutBtnContainer) {
+      logoutBtnContainer.style.display = 'none'; // Hide logout button
+    }
+  }
+});
