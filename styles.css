@@ -532,3 +532,23 @@ a:focus {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+.nav-button-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px; /* fixed width to prevent layout shift */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Hidden state */
+.nav-button-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  width: 0 !important; /* collapse width */
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
