@@ -29,10 +29,16 @@
         <li role="none"><a href="#" role="menuitem">Features</a></li>
         <li role="none"><a href="#" role="menuitem">FAQ</a></li>
         <li role="none"><a href="#" role="menuitem">Contact</a></li>
-        <button id="logout-btn" class="btn btn-glow btn-3d logout-btn" aria-label="Logout">Logout</button>
+        <!-- Logout button - initially hidden, will be shown by scripts.js if logged in -->
+        <li role="none" id="logout-btn-container" style="display: none;">
+          <button id="logout-btn" class="btn btn-glow btn-3d logout-btn" aria-label="Logout">Logout</button>
+        </li>
       </ul>
     </nav>
-    <button class="btn btn-glow btn-3d login-btn" aria-label="Login or Register"><a href="login.html">Login / Register</a></button>
+    <!-- Login/Register button - initially visible, will be hidden by scripts.js if logged in -->
+    <button id="login-register-btn" class="btn btn-glow btn-3d login-btn" aria-label="Login or Register">
+      <a href="login.html">Login / Register</a>
+    </button>
   </header>
 
   <!-- Hero Section -->
