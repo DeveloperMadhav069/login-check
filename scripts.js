@@ -377,12 +377,11 @@ const logoutBtn = document.getElementById('logout-btn');
 const loginRegisterBtn = document.getElementById('login-register-btn');
 const logoutBtnContainer = document.getElementById('logout-btn-container');
 
-// Logout button click handler
 if (logoutBtn) {
   logoutBtn.addEventListener('click', () => {
     signOut(auth).then(() => {
       alert('You have been logged out.');
-      window.location.href = 'login.html';
+      // No redirect here; UI updates automatically
     }).catch(error => {
       console.error('Logout error:', error);
       alert('Error logging out. Please try again.');
@@ -390,15 +389,26 @@ if (logoutBtn) {
   });
 }
 
-// Auth state change listener to toggle login/logout buttons
 onAuthStateChanged(auth, user => {
   if (user) {
     // User logged in
-    if (loginRegisterBtn) loginRegisterBtn.style.display = 'none';
-    if (logoutBtnContainer) logoutBtnContainer.style.display = 'block';
+    if (loginRegisterBtn) {
+      loginRegisterBtn.classList.add('hidden');
+      loginRegisterBtn.setAttribute('aria-hidden', 'true');
+    }
+    if (logoutBtnContainer) {
+      logoutBtnContainer.classList.remove('hidden');
+      logoutBtnContainer.setAttribute('aria-hidden', 'false');
+    }
   } else {
     // User not logged in
-    if (loginRegisterBtn) loginRegisterBtn.style.display = 'block';
-    if (logoutBtnContainer) logoutBtnContainer.style.display = 'none';
+    if (loginRegisterBtn) {
+      loginRegisterBtn.classList.remove('hidden');
+      loginRegisterBtn.setAttribute('aria-hidden', 'false');
+    }
+    if (logoutBtnContainer) {
+      logoutBtnContainer.classList.add('hidden');
+      logoutBtnContainer.setAttribute('aria-hidden', 'true');
+    }
   }
 });
