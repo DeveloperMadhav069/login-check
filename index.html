@@ -29,15 +29,14 @@
         <li role="none"><a href="#" role="menuitem">FAQ</a></li>
         <li role="none"><a href="#" role="menuitem">Contact</a></li>
         <!-- Logout button container, hidden by default -->
-        <li role="none" id="logout-btn-container" style="display: none;">
-          <button id="logout-btn" class="btn btn-glow btn-3d logout-btn" aria-label="Logout">Logout</button>
-        </li>
-      </ul>
-    </nav>
-    <!-- Login/Register button, visible by default -->
-    <button id="login-register-btn" class="btn btn-glow btn-3d login-btn" aria-label="Login or Register">
-      <a href="login.html" style="color: inherit; text-decoration: none;">Login / Register</a>
-    </button>
+    <li role="none" id="logout-btn-container" class="nav-button-container" aria-hidden="true">
+      <button id="logout-btn" class="btn btn-glow btn-3d logout-btn" aria-label="Logout">Logout</button>
+    </li>
+  </ul>
+</nav>
+<button id="login-register-btn" class="btn btn-glow btn-3d login-btn nav-button-container" aria-label="Login or Register">
+  <a href="login.html" style="color: inherit; text-decoration: none;">Login / Register</a>
+</button>
   </header>
 
   <!-- Hero Section -->
@@ -158,3 +157,4 @@
   <script type="module" src="scripts.js"></script>
 </body>
 </html>
+
