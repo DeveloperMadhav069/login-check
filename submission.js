@@ -33,13 +33,20 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-const form = document.getElementById('submission-form');
-const formMessage = document.getElementById('form-message');
+const form = document.getElementById('ideaForm');
+const formMessage = document.getElementById('formMessage');
 
 let currentUser = null;
 
+// Monitor auth state
 onAuthStateChanged(auth, (user) => {
   currentUser = user;
+  if (!user) {
+    formMessage.textContent = 'You must be logged in to submit your idea.';
+    formMessage.style.color = '#ff4d4d';
+  } else {
+    formMessage.textContent = '';
+  }
 });
 
 form.addEventListener('submit', async (e) => {
@@ -56,9 +63,9 @@ form.addEventListener('submit', async (e) => {
   const name = form.name.value.trim();
   const age = Number(form.age.value);
   const email = form.email.value.trim();
-  const projectTitle = form['project-title'].value.trim();
-  const projectDetails = form['project-details'].value.trim();
-  const fileInput = form['media-upload'];
+  const projectTitle = form.projectTitle.value.trim();
+  const projectDetails = form.projectDetails.value.trim();
+  const fileInput = form.mediaUpload;
 
   if (!name || !email || !projectTitle || !projectDetails) {
     formMessage.textContent = 'Please fill in all required fields.';
@@ -66,14 +73,14 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Strict age validation: must be integer between 8 and 14 inclusive
+  // Enforce age between 8 and 14
   if (!Number.isInteger(age) || age < 8 || age > 14) {
     formMessage.textContent = 'Age must be a whole number between 8 and 14 years.';
     formMessage.style.color = '#ff4d4d';
     return;
   }
 
-  // Basic email format check
+  // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     formMessage.textContent = 'Please enter a valid email address.';
@@ -86,6 +93,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     let mediaUrl = null;
+
     if (fileInput.files.length > 0) {
       const file = fileInput.files[0];
       const allowedTypes = [
@@ -103,7 +111,7 @@ form.addEventListener('submit', async (e) => {
         formMessage.style.color = '#ff4d4d';
         return;
       }
-      // Limit file size to e.g. 20 MB
+      // Limit file size to 20MB
       const MAX_SIZE = 20 * 1024 * 1024;
       if (file.size > MAX_SIZE) {
         formMessage.textContent = 'File size too large. Maximum allowed size is 20MB.';
