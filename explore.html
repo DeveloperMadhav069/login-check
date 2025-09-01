@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kidpreneur - Explore Ideas</title>
+  <link rel="stylesheet" href="explore.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">Kidpreneur</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="submission.html">Submission</a></li>
+      <li><a href="explore.html" class="active">Explore Ideas</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="challenges.html">Challenges</a></li>
+      <li id="auth-link-container"></li>
+    </ul>
+  </nav>
+
+  <main class="explore-main">
+    <h1>Explore Submitted Startup Ideas</h1>
+    <div id="ideas-grid" class="ideas-grid" aria-live="polite" aria-label="Submitted startup ideas">
+      <!-- Ideas will be dynamically inserted here -->
+    </div>
+    <div id="loading-message" class="loading-message">Loading ideas...</div>
+    <div id="error-message" class="error-message" role="alert"></div>
+  </main>
+
+  <script type="module" src="firebase-auth.js"></script>
+  <script type="module" src="explore.js"></script>
+</body>
+</html>
