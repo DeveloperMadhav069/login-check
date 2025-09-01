@@ -1,0 +1,187 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #1a1c2c, #2a2f4a);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background: rgba(49, 30, 95, 0.85);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 30px #7a00ffcc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 24px 24px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ff33bb;
+  text-decoration: none;
+  text-shadow: 0 0 12px #ff33bb, 0 0 30px #ff0096;
+}
+
+ul.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+ul.nav-links li a,
+ul.nav-links li button {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul.nav-links li a:hover,
+ul.nav-links li button:hover,
+ul.nav-links li a:focus,
+ul.nav-links li button:focus {
+  background: linear-gradient(145deg, #7a00ff, #ff0096);
+  box-shadow:
+    0 6px 15px rgba(122, 0, 255, 0.7),
+    0 0 20px #ff0096,
+    inset 0 -4px 6px #5800b2;
+  outline: none;
+  color: #fff;
+}
+
+ul.nav-links li a.active {
+  background: linear-gradient(145deg, #7a00ff, #ff0096);
+  box-shadow:
+    0 6px 15px rgba(122, 0, 255, 0.7),
+    0 0 20px #ff0096,
+    inset 0 -4px 6px #5800b2;
+}
+
+.submission-main {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  background: rgba(31, 23, 67, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 0 40px #ff33bbaa;
+}
+
+.submission-main h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ff33bb;
+  text-shadow: 0 0 18px #ff33bb, 0 0 40px #ff0096;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #ffd4ff;
+}
+
+label span {
+  color: #ff4d90;
+  font-weight: 800;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+input[type="file"] {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-shadow:
+    inset 0 0 8px #7a00ff55,
+    0 0 10px #ff33bb66;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+input[type="file"]:focus {
+  outline: none;
+  box-shadow:
+    0 0 15px #ff33bb,
+    inset 0 0 15px #7a00ffcc;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-glow {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(145deg, #7a00ff, #ff0096);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 8px 25px rgba(255, 0, 150, 0.9),
+    0 0 30px #ff0096,
+    inset 0 -6px 8px #ff33bb;
+  text-shadow:
+    0 0 7px #ff5ca2,
+    0 0 14px #ff0096,
+    0 0 21px #ff33bb;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-glow:hover,
+.btn-glow:focus {
+  box-shadow:
+    0 12px 40px rgba(255, 0, 150, 1),
+    0 0 35px #ff0096,
+    inset 0 -8px 10px #ff33bb;
+  outline: none;
+}
+
+#form-message {
+  margin-top: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
