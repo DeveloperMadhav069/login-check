@@ -36,7 +36,6 @@ const storage = getStorage(app);
 const form = document.getElementById('submission-form');
 const formMessage = document.getElementById('form-message');
 
-// Store current logged in user info
 let currentUser = null;
 
 onAuthStateChanged(auth, (user) => {
@@ -46,6 +45,7 @@ onAuthStateChanged(auth, (user) => {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   formMessage.textContent = '';
+  formMessage.style.color = '';
 
   if (!currentUser) {
     formMessage.textContent = 'You must be logged in to submit your idea.';
@@ -60,14 +60,23 @@ form.addEventListener('submit', async (e) => {
   const projectDetails = form['project-details'].value.trim();
   const fileInput = form['media-upload'];
 
-  if (!name || !age || !email || !projectTitle || !projectDetails) {
+  if (!name || !email || !projectTitle || !projectDetails) {
     formMessage.textContent = 'Please fill in all required fields.';
     formMessage.style.color = '#ff4d4d';
     return;
   }
 
-  if (age < 8 || age > 14) {
-    formMessage.textContent = 'Age must be between 8 and 14.';
+  // Strict age validation: must be integer between 8 and 14 inclusive
+  if (!Number.isInteger(age) || age < 8 || age > 14) {
+    formMessage.textContent = 'Age must be a whole number between 8 and 14 years.';
+    formMessage.style.color = '#ff4d4d';
+    return;
+  }
+
+  // Basic email format check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    formMessage.textContent = 'Please enter a valid email address.';
     formMessage.style.color = '#ff4d4d';
     return;
   }
@@ -79,6 +88,28 @@ form.addEventListener('submit', async (e) => {
     let mediaUrl = null;
     if (fileInput.files.length > 0) {
       const file = fileInput.files[0];
+      const allowedTypes = [
+        'application/pdf',
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'image/bmp',
+        'video/mp4',
+        'video/webm',
+        'video/ogg'
+      ];
+      if (!allowedTypes.includes(file.type)) {
+        formMessage.textContent = 'Unsupported file type. Please upload PDF, image, or video files only.';
+        formMessage.style.color = '#ff4d4d';
+        return;
+      }
+      // Limit file size to e.g. 20 MB
+      const MAX_SIZE = 20 * 1024 * 1024;
+      if (file.size > MAX_SIZE) {
+        formMessage.textContent = 'File size too large. Maximum allowed size is 20MB.';
+        formMessage.style.color = '#ff4d4d';
+        return;
+      }
       const storageRef = ref(storage, `project_media/${currentUser.uid}_${Date.now()}_${file.name}`);
       await uploadBytes(storageRef, file);
       mediaUrl = await getDownloadURL(storageRef);
@@ -98,9 +129,10 @@ form.addEventListener('submit', async (e) => {
     formMessage.textContent = 'Your idea was submitted successfully!';
     formMessage.style.color = '#33ff99';
     form.reset();
+
   } catch (error) {
     console.error('Error submitting idea:', error);
-    formMessage.textContent = 'Failed to submit your idea. Please try again.';
+    formMessage.textContent = 'Submission failed. Please try again later.';
     formMessage.style.color = '#ff4d4d';
   }
 });
