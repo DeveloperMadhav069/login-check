@@ -7,52 +7,33 @@
   <link rel="stylesheet" href="submission.css" />
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <a href="index.html" class="logo">Kidpreneur</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="submission.html" class="active">Submission</a></li>
-      <li><a href="explore.html">Explore Ideas</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="challenges.html">Challenges</a></li>
-      <li id="auth-link-container"></li>
-    </ul>
-  </nav>
+  <h1 class="page-title">Submit Your Idea</h1>
+  <form id="ideaForm" enctype="multipart/form-data" novalidate>
+    <label for="name">Name <span>*</span></label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required />
 
-  <main class="submission-main">
-    <h1>Submit Your Startup Idea</h1>
-    <form id="submission-form" enctype="multipart/form-data" novalidate>
-      <div class="form-row">
-        <label for="name">Name <span>*</span></label>
-        <input type="text" id="name" name="name" placeholder="Your full name" required />
-      </div>
-      <div class="form-row">
-        <label for="age">Age <span>*</span></label>
-        <input type="number" id="age" name="age" min="8" max="14" placeholder="Your age (8-14)" required />
-      </div>
-      <div class="form-row">
-        <label for="email">Email <span>*</span></label>
-        <input type="email" id="email" name="email" placeholder="Your email" required />
-      </div>
-      <div class="form-row">
-        <label for="project-title">Project Title <span>*</span></label>
-        <input type="text" id="project-title" name="project-title" placeholder="Title of your project" required />
-      </div>
-      <div class="form-row">
-        <label for="project-details">Project Details <span>*</span></label>
-        <textarea id="project-details" name="project-details" placeholder="Describe your project..." rows="5" required></textarea>
-      </div>
-      <div class="form-row">
-        <label for="media-upload">Upload PDF, Image, or Video (optional)</label>
-        <input type="file" id="media-upload" name="media-upload" accept=".pdf,image/*,video/*" />
-      </div>
-      <button type="submit" class="btn-glow">Submit Idea</button>
-    </form>
-    <div id="form-message" role="alert" aria-live="polite"></div>
-  </main>
+    <label for="age">Age <span>*</span></label>
+    <input type="number" id="age" name="age" min="8" max="14" placeholder="Your age (8-14)" required />
 
-  <script type="module" src="firebase-auth.js"></script>
+    <label for="email">Email <span>*</span></label>
+    <input type="email" id="email" name="email" placeholder="Your email" required />
+
+    <label for="projectTitle">Project Title <span>*</span></label>
+    <input type="text" id="projectTitle" name="projectTitle" placeholder="Title of your project" required />
+
+    <label for="projectDetails">Project Details <span>*</span></label>
+    <textarea id="projectDetails" name="projectDetails" placeholder="Describe your project..." rows="5" required></textarea>
+
+    <label for="mediaUpload">Upload PDF, Image, or Video (optional)</label>
+    <input type="file" id="mediaUpload" name="mediaUpload" accept=".pdf,image/*,video/*" />
+
+    <button type="submit">Submit Idea</button>
+
+    <div id="formMessage" role="alert" aria-live="polite"></div>
+  </form>
+
+  <!-- Firebase Auth Navbar (optional) can be added here -->
+
   <script type="module" src="submission.js"></script>
 </body>
 </html>
